@@ -1,6 +1,11 @@
+const reducer = (accumulator, curr) => accumulator + curr;
+
 describe("Calculadora ", () => {
   it("deberia devolver el numero ingresado", () => {
-    expect(sumar(3)).toEqual(3);
+    expect(sumar("3")).toEqual(3);
+  });
+  it("deberia devolver la suma de la cadena", () => {
+    expect(sumar("1,2")).toEqual(3);
   });
   // it("deberia calcular para un cantidad", () => {
   //   expect(calcularTotal(2, 2, "")).toEqual(4);
@@ -16,9 +21,23 @@ describe("Calculadora ", () => {
   // });
 });
 
-function sumar(cadena){
-  return cadena;
+function sumar(cadena)
+{
+  //
+
+  let tmp = cadena.split(',').map(i => parseInt(i,10));
+  //var resp = cadena.reduce(reducer)
+  var tmp1 = [1,2];
+  return tmp.reduce(reducer);
 }
+
+// function delimitador(cadena, arrayDelimitadores){
+//   cadena.replace(/[-]/g, ',');
+//   for (let value of arrayDelimitadores) 
+//     cadena.replace(/value/g, ',');
+// }
+
+
 
 // function impuestoEstado(estado) {
 //   let impuestos = { CA: 0.0825, UT: 0.0665, "": 0 };
