@@ -7,6 +7,9 @@ describe("Calculadora ", () => {
   it("deberia devolver la suma de la cadena", () => {
     expect(sumar("1,2")).toEqual(3);
   });
+  it("deberia devolver la suma de la cadena", () => {
+    expect(sumar("1,2-3")).toEqual(6);
+  });
   // it("deberia calcular para un cantidad", () => {
   //   expect(calcularTotal(2, 2, "")).toEqual(4);
   // });
@@ -24,10 +27,12 @@ describe("Calculadora ", () => {
 function sumar(cadena)
 {
   //
-
-  let tmp = cadena.split(',').map(i => parseInt(i,10));
+  let reg = /\s*(?:-|,|$)\s*/
+  //let tmp = cadena.split(reg);
+  let tmp = cadena.split(reg).map(i => parseInt(i,10));
   //var resp = cadena.reduce(reducer)
-  var tmp1 = [1,2];
+  //return tmp;
+  // var tmp1 = [1,2];
   return tmp.reduce(reducer);
 }
 
