@@ -1,0 +1,7 @@
+Ingresar una cadena de caracteres
+Implementar funcion sumar con las validaciones "1,2,4,8" return 15
+Implementar funcion sumar con las validaciones "1-2-4,8" return 15
+Implementar delimitadores "[;]\n 6;7;4" return 15
+Implementar delimitadores de cadenas "[***]\n 1***2***3" returm 6
+Implementar delimitadores de cadenas multiples "[*][%]\n1*2%3,7-9" return 22
+Implementar ignorar numeros mayores a 1000
