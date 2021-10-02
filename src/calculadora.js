@@ -1,10 +1,8 @@
 const reducer = (accumulator, curr) => accumulator + curr;
-function CalcularCadena(cadena)
-{
+function CalcularCadena(cadena){
   if(!(cadena.match("//"))) //si la cadena no coincide con el caracter "//"
     return Sumar(cadena);
-  else
-  {
+  else{
     let dividir = cadena.split(["\n"]);
     let delimitadores = dividir[0];
     let cadenaNumeros = dividir[1];
@@ -12,16 +10,14 @@ function CalcularCadena(cadena)
     return Sumar(res);
   }
 }
-function CadenaConDelimitadores(cadenaNumeros, delimitadores)
-{
+function CadenaConDelimitadores(cadenaNumeros, delimitadores){
   delimitadores = delimitadores.replace(/[[]|[/]/gm,"").replace(/(])/gm,",").split(",");//Ej: [**][##] ==> **,##
   delimitadores.pop();
   for(let value of delimitadores)//convirtiendo los delimitadores de cadenaNumeros en "," Ej: 1%%2###2 ==> 1,2,2
     cadenaNumeros = cadenaNumeros.replace(value, ',');
   return cadenaNumeros;
 }
-function Sumar(cadena)
-{
+function Sumar(cadena){
   let tmp = cadena.split(/\s*(?:-|,|$)\s*/).map(i => parseInt(i,10)).filter(i => i <= 1000);
   return tmp.reduce(reducer);
 }
