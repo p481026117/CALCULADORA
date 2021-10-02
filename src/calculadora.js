@@ -16,7 +16,7 @@ function CadenaConDelimitadores(cadenaNumeros, delimitadores)
 {
   delimitadores = delimitadores.replace(/[[]|[/]/gm,"").replace(/(])/gm,",").split(",");//Ej: [**][##] ==> **,##
   delimitadores.pop();
-  for(let value of delimitadores)//convirtiendo los delimitadores en ","
+  for(let value of delimitadores)//convirtiendo los delimitadores de cadenaNumeros en "," Ej: 1%%2###2 ==> 1,2,2
     cadenaNumeros = cadenaNumeros.replace(value, ',');
   return cadenaNumeros;
 }
