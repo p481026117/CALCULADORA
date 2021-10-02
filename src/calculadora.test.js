@@ -2,13 +2,16 @@ const reducer = (accumulator, curr) => accumulator + curr;
 
 describe("Calculadora ", () => {
   it("deberia devolver el numero ingresado", () => {
-    expect(sumar("3")).toEqual(3);
+    expect(Operacion("3")).toEqual(3);
   });
   it("deberia devolver la suma de la cadena", () => {
-    expect(sumar("1,2")).toEqual(3);
+    expect(Operacion("1,2")).toEqual(3);
   });
   it("deberia devolver la suma de la cadena", () => {
-    expect(sumar("1,2-3")).toEqual(6);
+    expect(Operacion("1,2-3")).toEqual(6);
+  });
+  it("probando funcion delimitadores", () => {
+    expect(ObtenerDelimitadores("[***,hh,y]")).toEqual("***", "hh", "y");
   });
   // it("deberia calcular para un cantidad", () => {
   //   expect(calcularTotal(2, 2, "")).toEqual(4);
@@ -24,9 +27,29 @@ describe("Calculadora ", () => {
   // });
 });
 
-function sumar(cadena)
+function Operacion(cadena)
 {
+  if(!(cadena.match("//"))) //si la cadena no coincide con el caracter "//"
+    return Sumar(cadena);
+  else
+  {
+    delimitadores = cadena.split([/\n/])[0];
+    cadenaNumeros = cadena.split([/\n/])[1];
+    return ObtenerNumeros(cadena,delimitadores)
+  }
+  
+      
+  //return Sumar(cadenaNumeros)
+}
   //
+function ObtenerDelimitadores(delimitadores)
+{
+  return delimitadores.replace("//","").replace("]","").replace("[","").split(",");
+}
+function Sumar(cadena)
+{
+
+  
   let reg = /\s*(?:-|,|$)\s*/
   //let tmp = cadena.split(reg);
   let tmp = cadena.split(reg).map(i => parseInt(i,10));
