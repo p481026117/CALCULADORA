@@ -41,7 +41,6 @@ function CadenaConDelimitadores(cadenaNumeros, delimitadores)
   delimitadores.pop();
   for(let value of delimitadores)//convirtiendo los delimitadores en ","
     cadenaNumeros = cadenaNumeros.replace(value, ',');
-  console.log("RESULTADO\n" + cadenaNumeros);
   return cadenaNumeros;
 }
 function Sumar(cadena)
