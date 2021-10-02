@@ -25,4 +25,7 @@ function Sumar(cadena)
   let tmp = cadena.split(/\s*(?:-|,|$)\s*/).map(i => parseInt(i,10)).filter(i => i <= 1000);
   return tmp.reduce(reducer);
 }
-export default CalcularCadena;
+module.exports = {
+    CalcularCadena,
+    CadenaConDelimitadores
+}
