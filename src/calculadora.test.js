@@ -10,8 +10,11 @@ describe("Calculadora ", () => {
   it("deberia devolver la suma de la cadena", () => {
     expect(Operacion("1,2-3")).toEqual(6);
   });
-  it("probando funcion delimitadores", () => {
-    expect(ObtenerDelimitadores("[***,hh,y]")).toEqual("***", "hh", "y");
+  // it("probando funcion delimitadores", () => {
+  //   expect(Resultado("", "[***,hh,y]")).toEqual(["***", "hh", "y"]);
+  // });
+  it("probando funcion Resultado deberia devolver una cadena separada por comas", () => {
+    expect(Resultado("3***2hh1y1","[***,hh,y]")).toEqual("3,2,1,1");
   });
   // it("deberia calcular para un cantidad", () => {
   //   expect(calcularTotal(2, 2, "")).toEqual(4);
@@ -35,21 +38,23 @@ function Operacion(cadena)
   {
     delimitadores = cadena.split([/\n/])[0];
     cadenaNumeros = cadena.split([/\n/])[1];
-    return ObtenerNumeros(cadena,delimitadores)
+    return Sumar(Resultado(cadena,delimitadores))
   }
   
       
   //return Sumar(cadenaNumeros)
 }
   //
-function ObtenerDelimitadores(delimitadores)
+function Resultado(cadena, delimitadores)
 {
-  return delimitadores.replace("//","").replace("]","").replace("[","").split(",");
+  let del = delimitadores.replace("//","").replace("]","").replace("[","").split(",");
+  for(let value of del)
+     cadena = cadena.replace(value, ',');
+  return cadena;
 }
 function Sumar(cadena)
 {
 
-  
   let reg = /\s*(?:-|,|$)\s*/
   //let tmp = cadena.split(reg);
   let tmp = cadena.split(reg).map(i => parseInt(i,10));
