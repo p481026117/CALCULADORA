@@ -1,4 +1,5 @@
-const reducer = (accumulator, curr) => accumulator + curr;
+import CalcularCadena from "./calculadora.js";
+
 
 describe("Calculadora de Cadenas ", () => {
   it("deberia devolver el numero ingresado 3  ====>  3", () => {
@@ -21,20 +22,6 @@ describe("Calculadora de Cadenas ", () => {
   });
 });
 
-function CalcularCadena(cadena)
-{
-  if(!(cadena.match("//"))) //si la cadena no coincide con el caracter "//"
-    return Sumar(cadena);
-  else
-  {
-    let dividir = cadena.split(["\n"]);
-    let delimitadores = dividir[0];
-    let cadenaNumeros = dividir[1];
-    let res = CadenaConDelimitadores(cadenaNumeros,delimitadores);
-    return Sumar(res);
-  }
-
-}
 function CadenaConDelimitadores(cadenaNumeros, delimitadores)
 {
   delimitadores = delimitadores.replace(/[[]|[/]/gm,"").replace(/(])/gm,",").split(",");//Ej: [**][##] ==> **,##
@@ -43,8 +30,4 @@ function CadenaConDelimitadores(cadenaNumeros, delimitadores)
     cadenaNumeros = cadenaNumeros.replace(value, ',');
   return cadenaNumeros;
 }
-function Sumar(cadena)
-{
-  let tmp = cadena.split(/\s*(?:-|,|$)\s*/).map(i => parseInt(i,10)).filter(i => i <= 1000);
-  return tmp.reduce(reducer);
-}
+
